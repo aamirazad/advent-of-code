@@ -40,7 +40,7 @@ func part1() {
 				num_parts = append(num_parts, string(character))
 			} else if character == '.' && num_parts != nil{
 				// Once the full number has been found, figure out if it should be counted
-				fmt.Println(num_parts)
+				for number := range(chara)
 				num_parts = nil
 			}
 		}
