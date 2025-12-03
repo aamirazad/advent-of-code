@@ -3,5 +3,5 @@
 version = 4
 
 [[package]]
-name = "rust"
+name = "day01-secret-entrance"
 version = "0.1.0"

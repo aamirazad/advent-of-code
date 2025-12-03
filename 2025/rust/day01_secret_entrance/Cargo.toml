@@ -1,5 +1,5 @@
 [package]
-name = "day-1-secret-entrance"
+name = "day01-secret-entrance"
 version = "0.1.0"
 edition = "2024"
 
