@@ -1,0 +1,5 @@
+{
+	"rust-analyzer.linkedProjects": [
+		"./2025/day-1-secret-entrance"
+	]
+}
