@@ -1,3 +1,7 @@
+use std::fs;
+
+const FILE: &str = "sample.txt";
+
 fn main() {
-    println!("Hello, world!");
+    let input = fs::read_to_string(FILE).expect("Unable to read file");
 }
