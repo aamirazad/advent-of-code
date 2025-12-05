@@ -15,7 +15,7 @@ class Dial {
 
 	public void setDial() {
 		int current = this.current;
-		while (current >= 0 && current <= 99) {
+		while (current < 0 || current > 99) {
 			if (current < 0) {
 				current += 100;
 			} else if (current > 99) {
