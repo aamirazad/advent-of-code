@@ -13,27 +13,34 @@ class Dial {
 		this.count = count;
 	}
 
-	public void setDial(int clicks) {
-		int location = this.current + clicks;
-		System.out.println("MOVING " + clicks + " New location: " + location);
-		while (location < 0 || location > 99) {
-			// Passed through zero
-			if (this.current !== 0) {
-				System.out.println("Passed zero because of " + clicks);
-				this.count += 1;
-			}
-			if (location < 0) {
-				location += 100;
-			} else if (location > 99) {
-				location -= 100;
-			}
-		}
-		this.current = location;
-		if (location == 0) {
-			System.out.println("Landed on zero");
+	public int setDial(int clicks) {
+		int newLocation = this.current + clicks;
+		if (newLocation < 0) {
+			newLocation += 100;
 			this.count += 1;
+		} else if (newLocation > 99) {
+			newLocation -= 100;
+			this.count += 1;
+		} else if (newLocation == 0) {
+			this.count += 1;
+		} else if (clicks > 100 || clicks < -100) {
+			this.count += Math.floor(Math.abs(clicks) / 100);
+		} else {
+			return 
 		}
+		return setDial(0)
 	}
+
+	/*
+	 * Pseudocode
+	 * Set the new location
+	 * If the number is (newLocation < 0 || newLocation > 99):
+	 * if the number is less than zero, add 100 (else subtract 100), return
+	 * setDial(newNumber)
+	 * Else if the number is zero, increase counter, return number
+	 * Else if the number is greater than 100 past the old number, use mod to find
+	 * the number times passed
+	 */
 }
 
 public class Part2 {
