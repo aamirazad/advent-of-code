@@ -13,17 +13,26 @@ class Dial {
 		this.count = count;
 	}
 
-	public void setDial() {
-		int current = this.current;
-		while (current < 0 || current > 99) {
-			if (current < 0) {
-				current += 100;
-			} else if (current > 99) {
-				current -= 100;
+	public void setDial(int clicks) {
+		int location = this.current + clicks;
+		System.out.println("MOVING " + clicks + " New location: " + location);
+		while (location < 0 || location > 99) {
+			// Passed through zero
+			if (this.current !== 0) {
+				System.out.println("Passed zero because of " + clicks);
+				this.count += 1;
 			}
+			if (location < 0) {
+				location += 100;
+			} else if (location > 99) {
+				location -= 100;
+			}
+		}
+		this.current = location;
+		if (location == 0) {
+			System.out.println("Landed on zero");
 			this.count += 1;
 		}
-		this.current = current;
 	}
 }
 
@@ -39,14 +48,9 @@ public class Part2 {
 				char direction = line.charAt(0);
 				int clicks = Integer.parseInt(line.substring(1));
 				if (direction == 'L') {
-					dial.current -= clicks;
-					dial.setDial();
+					dial.setDial(-clicks);
 				} else if (direction == 'R') {
-					dial.current += clicks;
-					dial.setDial();
-				}
-				if (dial.current == 0) {
-					dial.count += 1;
+					dial.setDial(clicks);
 				}
 			}
 			scanner.close();
